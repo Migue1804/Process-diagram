@@ -1,53 +1,16 @@
-# Yamazumi Chart
+# Diagramas de proceso
 
-Un Yamazumi Chart es una herramienta utilizada en la fabricación y gestión de procesos para visualizar y analizar la distribución del trabajo en un proceso de producción. Este gráfico lleva el nombre de su creador, Taiichi Yamazumi, un ingeniero japonés conocido por sus contribuciones al desarrollo del Sistema de Producción Toyota y a la metodología Lean Manufacturing.
+Los diagramas de proceso son herramientas visuales utilizadas en la gestión de procesos para representar gráficamente las diferentes etapas o pasos de un proceso, así como la secuencia de estas etapas y cómo se relacionan entre sí. Estos diagramas son útiles para comprender y comunicar cómo se realiza un proceso y pueden ayudar a identificar áreas de mejora, cuellos de botella o ineficiencias.
 
-El Yamazumi Chart ayuda a identificar desequilibrios en la carga de trabajo entre diferentes estaciones de trabajo dentro de un proceso de fabricación. Para ello, muestra gráficamente la cantidad de tiempo requerido para completar una tarea específica en cada estación o actividad del proceso. Esto permite a los gerentes y equipos de producción optimizar la distribución del trabajo para minimizar el despilfarro y mejorar la eficiencia.
+Uno de los tipos más comunes de diagramas de proceso es el diagrama de flujo, que utiliza una variedad de símbolos estándar para representar diferentes elementos del proceso. Algunos de los símbolos comunes en un diagrama de flujo de proceso incluyen:
 
-En un Yamazumi Chart, el eje horizontal representa las diferentes estaciones de trabajo o actividades en el proceso, mientras que el eje vertical muestra el tiempo requerido para completar cada tarea. Cada barra en el gráfico representa el tiempo necesario para completar la tarea en una estación particular. Al visualizar esta información de manera clara, los equipos pueden identificar fácilmente cuellos de botella, sobreutilización o subutilización de recursos, y tomar medidas para mejorar el flujo de trabajo y la productividad global del proceso.
-
-### Pre-Requsities
-- Python 3.9 (Python 3.7/3.8 can work in some cases)
-
-### Steps to run Code
-- Clone the repository
-```
-git clone https://github.com/RizwanMunawar/Yamazumi-chart.git
-```
-
-- Goto the cloned folder.
-```
-cd Yamazumi-chart
-```
-
-- Create a virtual envirnoment (Recommended, If you dont want to disturb python packages)
-```
-
-### For Window Users
-python -m venv yolov5objtracking
-cd Yamazumi-chart
-cd Scripts
-activate
-cd ..
-cd ..
-```
-
-- Upgrade pip with mentioned command below.
-```
-pip install --upgrade pip
-```
-
-- Install requirements with mentioned command below.
-```
-pip install -r requirements.txt
-```
-
-- Run the code with mentioned command below.
-```
-
-### Streamlit Dashboard
-- If you want to run Yamazumi app on streamlit app (Dashboard), you can use mentioned command below.
-
-```
-python -m streamlit run app.py
-```
+Inicio/Fin: Representado por un óvalo, indica el inicio o fin del proceso.
+Actividad/Proceso: Representado por un rectángulo, muestra una tarea o actividad específica dentro del proceso.
+Decisión: Representado por un rombo, indica una decisión que debe tomarse en el proceso.
+Conector: Representado por un círculo, indica donde se conectan diferentes partes del diagrama.
+Flujo/Conexión: Representado por una flecha, muestra la secuencia o dirección del flujo dentro del proceso.
+Espera: Representado por una barra vertical, indica un período de espera en el proceso.
+Documento: Representado por un paralelogramo, indica un documento o formulario asociado con una etapa del proceso.
+Almacenamiento: Representado por un rectángulo con bordes redondeados, indica un lugar donde se almacenan datos o información.
+Entrada/Salida: Representado por una flecha con dos líneas paralelas, indica la entrada o salida de datos del proceso.
+Estos son solo algunos de los símbolos comunes utilizados en los diagramas de proceso. La elección de los símbolos específicos y su diseño depende del tipo de proceso que se esté representando y de las convenciones de la organización o industria.

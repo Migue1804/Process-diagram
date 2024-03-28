@@ -46,12 +46,15 @@ def main():
         activity_distance = st.sidebar.number_input(f'Distancia Recorrida (km) - Actividad {i+1}', min_value=0.0, step=0.1, value=0.0)
         activity_type = st.sidebar.selectbox(f'Tipo de Actividad - Actividad {i+1}', ['Operación', 'Transporte', 'Inspección', 'Espera', 'Almacen'])
         
-        activities_data.append((activity_name, activity_time, activity_distance, activity_type))
+        # Agregar el símbolo correspondiente a cada tipo de actividad
+        activity_symbol = get_activity_symbol(activity_type)
+        
+        activities_data.append((activity_name, activity_time, activity_distance, activity_type, activity_symbol))
 
     plot_process_diagram(activities_data)
 
     # Convertir los datos en un DataFrame de Pandas
-    df = pd.DataFrame(activities_data, columns=['Nombre de la Actividad', 'Tiempo (min)', 'Distancia (km)', 'Tipo de Actividad'])
+    df = pd.DataFrame(activities_data, columns=['Nombre de la Actividad', 'Tiempo (min)', 'Distancia (km)', 'Tipo de Actividad', 'Símbolo'])
     st.write(df)
 
     # Botón para descargar el DataFrame como archivo Excel
@@ -65,11 +68,16 @@ def get_colors(activity_types):
     colors = {'Operación': 'green', 'Transporte': 'red', 'Inspección': 'yellow', 'Espera': 'red', 'Almacen': 'red'}
     return {activity_type: colors[activity_type] for activity_type in activity_types}
 
+def get_activity_symbol(activity_type):
+    symbols = {'Operación': '🟩', 'Transporte': '➡️', 'Inspección': '🟡', 'Espera': '🔴', 'Almacen': '🔺'}
+    return symbols.get(activity_type, '❓')
+
 def plot_process_diagram(activities_data):
     activity_names = [data[0] for data in activities_data]
     activity_times = [data[1] for data in activities_data]
     activity_distances = [data[2] for data in activities_data]
     activity_types = [data[3] for data in activities_data]
+    activity_symbols = [data[4] for data in activities_data]
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 10))
 

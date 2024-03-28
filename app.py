@@ -52,16 +52,6 @@ def main():
 
     # Convertir los datos en un DataFrame de Pandas
     df = pd.DataFrame(activities_data, columns=['Nombre de la Actividad', 'Tiempo (min)', 'Distancia (km)', 'Tipo de Actividad'])
-    
-    # Reemplazar los nombres de los tipos de actividad con los símbolos correspondientes
-    df['Tipo de Actividad'] = df['Tipo de Actividad'].replace({
-        'Operación': '🟩',
-        'Transporte': '➡️',
-        'Inspección': '🟡',
-        'Almacen': '🔺',
-        'Espera': '🔴'
-    })
-    
     st.write(df)
 
     # Botón para descargar el DataFrame como archivo Excel
@@ -70,6 +60,10 @@ def main():
                            data=df.to_csv().encode('utf-8'),
                            file_name='actividades_diagrama.xlsx',
                            mime='application/octet-stream')
+
+def get_colors(activity_types):
+    colors = {'Operación': 'green', 'Transporte': 'red', 'Inspección': 'yellow', 'Espera': 'red', 'Almacen': 'red'}
+    return {activity_type: colors[activity_type] for activity_type in activity_types}
 
 def plot_process_diagram(activities_data):
     activity_names = [data[0] for data in activities_data]

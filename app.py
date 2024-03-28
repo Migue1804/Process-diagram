@@ -3,6 +3,30 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def main():
+    with st.sidebar: 
+        st.title("Instrucciones")
+        st.write("¡Bienvenido a la aplicación de Diagrama de Proceso!")
+        st.markdown("Por favor sigue las instrucciones paso a paso para utilizar la herramienta correctamente.")
+        
+        # Pasos para el Diagrama de Proceso
+        st.markdown("### Pasos:")
+        st.markdown("- **Paso 1:** Ingresa el número de actividades.")
+        st.markdown("- **Paso 2:** Para cada actividad, ingresa el nombre, tiempo, distancia recorrida y tipo.")
+        st.markdown("- **Paso 3:** Observa los gráficos que muestran el tiempo y la distancia por actividad.")
+        st.markdown("- **Paso 4:** ¡Listo! Puedes ver los datos ingresados en la tabla debajo de los gráficos y descargarlos como un archivo Excel.")
+        
+        # Ejemplos de tipos de actividad con símbolos
+        st.markdown("### Ejemplos de Tipos de Actividad:")
+        st.markdown("- **Operación:** 🟩")
+        st.markdown("- **Transporte:** ➡️")
+        st.markdown("- **Inspección:** 🟡")
+        st.markdown("- **Almacenamiento:** 🔺")
+        st.markdown("- **Espera:** 🔴")
+        
+        # Información adicional
+        st.markdown("### Información Adicional:")
+        st.markdown("👉 **Para más información: [LinkedIn](https://www.linkedin.com/in/josemaguilar/)**")
+
     st.image("diagrama.jpg", width=720) 
 
     st.sidebar.header("Diagrama de Proceso")
@@ -20,7 +44,7 @@ def main():
         activity_name = st.sidebar.text_input(f'Nombre de la Actividad - Actividad {i+1}')
         activity_time = st.sidebar.number_input(f'Tiempo de la Actividad (min) - Actividad {i+1}', min_value=0.0, step=0.1, value=0.0)
         activity_distance = st.sidebar.number_input(f'Distancia Recorrida (km) - Actividad {i+1}', min_value=0.0, step=0.1, value=0.0)
-        activity_type = st.sidebar.selectbox(f'Tipo de Actividad - Actividad {i+1}', ['Proceso', 'Decisión', 'Inicio/Fin', 'Documento', 'Espera'])
+        activity_type = st.sidebar.selectbox(f'Tipo de Actividad - Actividad {i+1}', ['Operación', 'Transporte', 'Inspección', 'Espera', 'Almacen'])
         
         activities_data.append((activity_name, activity_time, activity_distance, activity_type))
 
@@ -38,7 +62,7 @@ def main():
                            mime='application/octet-stream')
 
 def get_colors(activity_types):
-    colors = {'Proceso': 'green', 'Decisión': 'yellow', 'Inicio/Fin': 'blue', 'Documento': 'orange', 'Espera': 'red'}
+    colors = {'Operación': 'green', 'Transporte': 'red', 'Inspección': 'yellow', 'Espera': 'red', 'Almacen': 'red'}
     return {activity_type: colors[activity_type] for activity_type in activity_types}
 
 def plot_process_diagram(activities_data):

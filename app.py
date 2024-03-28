@@ -57,13 +57,6 @@ def main():
     df = pd.DataFrame(activities_data, columns=['Nombre de la Actividad', 'Tiempo (min)', 'Distancia (km)', 'Tipo de Actividad', 'Símbolo'])
     st.write(df)
 
-    # Botón para descargar el DataFrame como archivo Excel
-    if st.button('Descargar datos como Excel'):
-        st.download_button(label='Descargar',
-                           data=df.to_csv().encode('utf-8'),
-                           file_name='actividades_diagrama.xlsx',
-                           mime='application/octet-stream')
-
 def get_colors(activity_types):
     colors = {'Operación': 'green', 'Transporte': 'red', 'Inspección': 'yellow', 'Espera': 'red', 'Almacen': 'red'}
     return {activity_type: colors[activity_type] for activity_type in activity_types}
